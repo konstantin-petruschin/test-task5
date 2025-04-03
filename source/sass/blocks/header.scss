@@ -1,0 +1,219 @@
+@use "../common/variables.scss" as v;
+@use "../mixins/media.scss" as m;
+
+.header {
+  position: sticky;
+  top: 0;
+  left: 0;
+  background-color: v.$black;
+  z-index: 20;
+
+  @include m.desktop {
+    min-height: 79px;
+    padding-top: 7px;
+  }
+}
+
+.header--white {
+  background-color: v.$white;
+  transition: background-color ease 0.3s;
+  border-radius: 0 0 8px 8px;
+}
+
+.header__container {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  padding-top: 10px;
+  padding-bottom: 10px;
+
+  @include m.tablet {
+    gap: 12px;
+  }
+}
+
+.header__logo {
+  height: auto;
+  color: v.$white;
+  display: flex;
+  align-items: center;
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 9px;
+
+  &:hover[href],
+  &:focus {
+    scale: 1.1;
+    outline: none;
+  }
+
+  &:active[href] {
+    opacity: 0.6;
+  }
+
+  @include m.tablet {
+    gap: 2px;
+  }
+}
+
+.header__logo-text {
+  width: 70px;
+}
+
+.header__logo-image {
+  color: v.$white;
+  width: 69px;
+  height: auto;
+  object-fit: cover;
+}
+
+.logo--black {
+  color: v.$black;
+}
+
+.header__toggle {
+  border: none;
+  width: 38px;
+  height: 38px;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  background-color: rgba(255, 255, 255, 0.1);
+
+  @include m.tablet {
+    display: none;
+  }
+}
+
+.header__toggle span {
+  border-radius: 100px;
+  width: 20px;
+  height: 2px;
+  background-color: v.$white;
+}
+
+.header__toggle--closed {
+  background: rgba(32, 32, 32, 0.03);
+  position: relative;
+
+  span {
+    background-color: v.$black;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+
+    &:nth-child(1) {
+      transform: translateY(6px) rotate(45deg);
+    }
+
+    &:nth-child(2) {
+      opacity: 0;
+    }
+
+    &:nth-child(3) {
+      transform: translateY(-6px) rotate(-45deg);
+    }
+
+  }
+}
+
+.header__menu {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  transform: translatex(-100% );
+  background-color: v.$light-gray;
+  width: 100%;
+  height: 90vh;
+  top: 58px;
+  left: 0;
+  transition: transform ease 0.3s, opacity ease 0.3s;
+  opacity: 0;
+  overflow-y: auto;
+
+  &--open {
+    transform: translateX(0);
+    opacity: 1;
+  }
+
+  @include m.tablet {
+    position: static;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    gap: 0 13px;
+    height: auto;
+    width: auto;
+    transform: unset;
+    opacity: unset;
+    background-color: transparent;
+    border-radius: 8px;
+    overflow: unset;
+  }
+}
+
+.header__connection {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  margin: 0 auto;
+  max-width: 100%;
+  width: 100%;
+  row-gap: 16px;
+  align-items: center;
+  padding: 10px;
+  border-radius: 8px 8px 0 0;
+  background-color: v.$white;
+
+  @include m.tablet {
+    display: flex;
+    width: auto;
+    background-color: transparent;
+    padding: 0;
+    gap: 5px;
+    justify-content: flex-end;
+
+  }
+}
+
+.header__connection-link {
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
+  font-size: 16px;
+  line-height: 14px;
+  text-decoration: none;
+  color: v.$black;
+
+  @include m.tablet {
+    color: v.$white;
+    margin-right: 8px;
+  }
+}
+
+.header__connection-button {
+  grid-column: 1 / 3;
+  grid-row: 2 / 3;
+  background-color: v.$black;
+  border: none;
+  font-weight: 500;
+  font-size: 16px;
+  color: v.$white;
+  border-radius: 8px;
+  padding: 14px;
+  cursor: pointer;
+  font-family: v.$font-family;
+
+  @include m.tablet {
+    padding: 10px 13px;
+    color: v.$black;
+    background-color: v.$white;
+  }
+}
+
+.header__toggle-language {
+  grid-column: 2 / 3;
+  grid-row: 1 / 2;
+  justify-self: end;
+  cursor: pointer;
+}
+

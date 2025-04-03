@@ -1,0 +1,90 @@
+@use "../common/variables.scss" as v;
+@use "../mixins/media.scss" as m;
+
+.toggle-language {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  background: rgba(32, 32, 32, 0.03);
+  border-radius: 8px;
+  width: 80px;
+  height: 38px;
+  overflow: hidden;
+  z-index: 2;
+
+  @include m.tablet {
+    background-color: rgba(255, 255, 255, 0.1);
+    width: 77px;
+  }
+}
+
+.toggle-language__input {
+  display: none;
+}
+
+.toggle-language__indicator {
+  position: absolute;
+  background-color: v.$black;
+  width: 40px;
+  height: 38px;
+  border-radius: 8px;
+  top: 0;
+  left: 0;
+  transition: transform 0.4s ease;
+  z-index: 1;
+  transform: translateX(100%);
+
+  @include m.tablet {
+    background-color: v.$white;
+  }
+}
+
+.toggle-language__input:checked + .toggle-language__indicator {
+  transform: translateX(0);
+}
+
+.toggle-language__option {
+  position: relative;
+  padding: 8px;
+  transition: color 0.4s ease;
+  text-align: center;
+  z-index: 3;
+  font-size: 14px;
+  text-transform: uppercase;
+
+  @include m.tablet {
+    padding: 4px;
+  }
+}
+
+.toggle-language__input:checked ~ .toggle-language__option.ru {
+  color: v.$white;
+
+  @include m.tablet {
+    color: v.$black;
+  }
+}
+
+.toggle-language__input:not(:checked) ~ .toggle-language__option.ru {
+  color: v.$gray;
+
+  @include m.tablet {
+    color: rgba(255, 255, 255, 0.6);
+   }
+}
+
+.toggle-language__input:checked ~ .toggle-language__option.en {
+  color: v.$gray;
+  @include m.tablet {
+   color: rgba(255, 255, 255, 0.6);
+  }
+}
+
+.toggle-language__input:not(:checked) ~ .toggle-language__option.en {
+  color: v.$white;
+
+  @include m.tablet {
+    color: v.$black;
+  }
+}

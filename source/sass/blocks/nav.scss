@@ -1,0 +1,139 @@
+@use "../common/variables.scss" as v;
+@use "../mixins/media.scss" as m;
+
+.nav {
+  padding-bottom: 98px;
+
+  @include m.tablet{
+    padding: 10px 12px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+  }
+}
+
+.nav__list {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  @include m.tablet {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 15px;
+    align-items: center;
+    padding: 0;
+    width: auto;
+  }
+}
+
+.nav__item {
+  position: relative;
+
+  &:not(:first-child)::before {
+    position: absolute;
+    content: "";
+    width: calc(100% - 20px);
+    height: 1px;
+    background-color: v.$light-gray2;
+    display: block;
+    top: 0;
+    left: 10px;
+
+    @include m.tablet {
+      display: none;
+    }
+  }
+}
+
+.nav__link {
+  width: 100%;
+  display: flex;
+  text-decoration: none;
+  color: v.$black;
+  padding: 16px 10px;
+  align-items: center;
+  justify-content: space-between;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 16px;
+
+  @include m.tablet {
+    padding: 0;
+    color: v.$white;
+    gap: 5px;
+    position: relative;
+  }
+
+  &--dropdown::after {
+    content: "";
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background-color: v.$light-gray2;
+
+
+  }
+}
+
+.nav__link--active {
+  font-weight: 500;
+  padding-bottom: 4px;
+
+  &::after {
+    background-color: v.$black;
+  }
+}
+
+.nav__link-dropdawn {
+  display: none;
+  list-style: none;
+  padding : 0;
+  margin: 0;
+
+  @include m.tablet {
+    position: absolute;
+    width: 260px;
+    top: 34px;
+    left: 0;
+    background-color: v.$white;
+    border-radius: 8px;
+  }
+}
+
+.nav__link-dropdawn--open {
+  display: block;
+}
+
+.nav__link-dropdawn-item {
+  width: 100%;
+
+  &:not(:first-child) {
+    @include m.tablet {
+      border-top: 1px solid v.$light-gray2;
+    }
+  }
+}
+
+.nav__dropdawn-link {
+  text-decoration: none;
+  color: v.$gray;
+  padding: 14px 20px;
+  width: 100%;
+  display: block;
+  border-radius: 8px;
+  font-size: 16px;
+  line-height: 16px;
+  position: relative;
+
+  &:hover,
+  &:active {
+    background-color: v.$black;
+    color: v.$white;
+  }
+}
+
+
+
