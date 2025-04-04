@@ -22,7 +22,7 @@
 
   @include m.tablet {
     font-size: 17px;
-    line-height: 30px;
+    line-height: 20px;
   }
 
   @include m.desktop {
@@ -33,4 +33,5 @@
 
 .page__main {
   flex: 1;
+  height: 100px;
 }

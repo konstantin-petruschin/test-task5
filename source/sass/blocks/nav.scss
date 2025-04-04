@@ -5,7 +5,7 @@
   padding-bottom: 98px;
 
   @include m.tablet{
-    padding: 10px 12px;
+    padding: 0;
     background: rgba(255, 255, 255, 0.1);
     border-radius: 8px;
   }
@@ -22,7 +22,6 @@
   @include m.tablet {
     flex-direction: row;
     flex-wrap: wrap;
-    gap: 15px;
     align-items: center;
     padding: 0;
     width: auto;
@@ -59,12 +58,33 @@
   font-weight: 400;
   font-size: 16px;
   line-height: 16px;
+  border-radius: 8px;
 
   @include m.tablet {
     padding: 0;
     color: v.$white;
     gap: 5px;
     position: relative;
+    padding: 11px 6px 11px 8px;
+
+    &--dropdown {
+      padding-right: 10px;
+    }
+
+    &:hover,
+    &:focus {
+      outline: none;
+      color: v.$black;
+      background-color: v.$white;
+
+      &::after {
+        background-color: v.$black;
+      }
+    }
+
+    &:active {
+      opacity: 0.8;
+    }
   }
 
   &--dropdown::after {
@@ -73,14 +93,19 @@
     height: 5px;
     border-radius: 50%;
     background-color: v.$light-gray2;
-
-
   }
 }
 
 .nav__link--active {
   font-weight: 500;
   padding-bottom: 4px;
+
+  @include m.tablet {
+    font-weight: 400;
+    padding: 11px 10px 11px 8px;
+    color: v.$black;
+    background-color: v.$white;
+  }
 
   &::after {
     background-color: v.$black;
@@ -116,6 +141,28 @@
     }
   }
 }
+
+.nav__item {
+  position: relative;
+}
+
+.nav__link--dropdown, .nav__link-dropdawn {
+  pointer-events: none;
+}
+
+.nav__item:hover .nav__link--dropdown,
+.nav__item:hover .nav__link-dropdawn,
+.nav__item:focus-within .nav__link--dropdown,
+.nav__item:focus-within .nav__link-dropdawn {
+  pointer-events: auto;
+}
+
+
+.nav__item:hover .nav__link-dropdawn,
+.nav__item:focus-within .nav__link-dropdawn {
+  display: block;
+}
+
 
 .nav__dropdawn-link {
   text-decoration: none;

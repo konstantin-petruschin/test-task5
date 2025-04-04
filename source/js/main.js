@@ -19,14 +19,10 @@ toggleButtonElement.addEventListener('click', function () {
     headerLogo.classList.remove('logo--black');
     headerLogoText.classList.remove('logo--black');
   }
-
-  // if (menuElement.scrollHeight > menuElement.clientHeight) {
-  //   menuElement.style.overflowY = 'auto';
-  // }
 });
 
-
-const dropdownLinks = document.querySelectorAll('.nav__link--dropdown');
+const dropdownLinks = Array.from(document.querySelectorAll('.nav__link--dropdown'));
+// const dropdownLinks = document.querySelectorAll('.nav__link--dropdown');
 dropdownLinks.forEach(link => {
   link.addEventListener('click', function(event) {
     event.preventDefault();
@@ -44,3 +40,20 @@ dropdownLinks.forEach(link => {
     });
   });
 });
+
+
+
+document.addEventListener('click', function(event) {
+  const isClickInsideMenu = dropdownLinks.some(link => link.contains(event.target));
+
+  if (!isClickInsideMenu) {
+    dropdownLinks.forEach(link => {
+      const dropdown = link.nextElementSibling;
+      if (link.classList.contains('nav__link--active')) {
+        link.classList.remove('nav__link--active');
+        dropdown.classList.remove('nav__link-dropdawn--open');
+      }
+    });
+  }
+});
+
