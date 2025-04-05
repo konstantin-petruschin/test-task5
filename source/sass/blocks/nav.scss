@@ -59,6 +59,9 @@
   font-size: 16px;
   line-height: 16px;
   border-radius: 8px;
+  cursor: pointer;
+  transition: color ease 0.3s,
+  background-color ease 0.3s;
 
   @include m.tablet {
     padding: 0;
@@ -94,6 +97,15 @@
     border-radius: 50%;
     background-color: v.$light-gray2;
   }
+
+  @include m.desktop {
+    font-size: 18px;
+    padding: 11px 11px 11px 12px;
+
+    &--dropdown {
+      padding-right: 10px;
+    }
+  }
 }
 
 .nav__link--active {
@@ -105,6 +117,11 @@
     padding: 11px 10px 11px 8px;
     color: v.$black;
     background-color: v.$white;
+  }
+
+  @include m.desktop {
+    font-size: 18px;
+    padding: 11px 10px 11px 12px;
   }
 
   &::after {
@@ -134,10 +151,18 @@
 
 .nav__link-dropdawn-item {
   width: 100%;
+  position: relative;
 
-  &:not(:first-child) {
+  &:not(:first-child)::before {
     @include m.tablet {
-      border-top: 1px solid v.$light-gray2;
+      content: "";
+      display: block;
+      height: 1px;
+      width: calc(100% - 20px);
+      position: absolute;
+      top: 0;
+      left: 10px;
+      background-color: v.$light-gray;
     }
   }
 }

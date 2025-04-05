@@ -24,11 +24,12 @@
   <body class="page__body">
     <header class="header">
       <div class="header__container container">
-        <a class="header__logo">
-          <svg class="header__logo-image" width="69" height="26">
+        <a class="header__logo logo">
+          <svg class="logo__image" width="69" height="26">
             <use xlink:href="img/sprites/sprites.svg#logo"></use>
           </svg>
-          <span class="header__logo-text">Производство полуприцепов</span>
+          <img class="logo__desktop-icon" src="img/icons/logo-desktop.svg" alt="Логотип сайта." width="114" height="44">
+          <span class="logo__text">Производство полуприцепов</span>
         </a>
         <div class="header__menu">
           <nav class="header__nav nav">
@@ -125,7 +126,7 @@
             <a href="tel:+79007777777" class="header__connection-link">
               8 (900) 777-77-77
             </a>
-            <button class="header__connection-button">Заказать звонок</button>
+            <button class="header__connection-button button">Заказать звонок</button>
             <label class="header__toggle-language toggle-language">
               <input class="toggle-language__input visually-hidden" type="checkbox" checked />
               <span class="toggle-language__indicator"></span>
@@ -134,7 +135,7 @@
             </label>
           </div>
         </div>
-        <button class="header__toggle" aria-expanded="false">
+        <button class="header__toggle" type="button">
           <span></span>
           <span></span>
           <span></span>
@@ -150,11 +151,12 @@
       <div class="footer__container container">
         <div class="footer__wrapper">
           <div class="footer__top">
-            <a class="footer__logo">
-              <svg class="footer__logo-image" width="69" height="26">
+            <a class="footer__logo logo">
+              <svg class="logo__image" width="69" height="26">
                 <use xlink:href="img/sprites/sprites.svg#logo"></use>
               </svg>
-              <span class="footer__logo-text">Производство полуприцепов</span>
+              <img class="logo__desktop-icon" src="img/icons/logo-desktop.svg" alt="Логотип сайта." width="114" height="44">
+              <span class="logo__text">Производство полуприцепов</span>
             </a>
             <form class="footer__search">
               <input
@@ -168,8 +170,7 @@
               </button>
             </form>
           </div>
-          <button class="footer__connection-button">Заказать звонок</button>
-
+          <button class="footer__connection-button button">Заказать звонок</button>
           <div class="footer__nav">
             <div class="footer__contacts">
               <div class="footer__contacts-item footer__contacts-item--links">
@@ -339,7 +340,7 @@
         </div>
         <div class="footer__bottom">
           <span class="footer__copyright">© 2024 BRAVER</span>
-          <a class="footer__privacy-policy">Политика конфиденциальности</a>
+          <a class="footer__privacy-policy" href="#">Политика конфиденциальности</a>
           <p class="footer__author">Сделано в <a href="#" class="footer__author-link">OMNI</a></p>
         </div>
       </div>
